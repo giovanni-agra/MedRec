@@ -1,0 +1,32 @@
+{% block heading %}
+
+
+    {% if users %}
+        {% for user in users %}
+            <p>Balance: <span id="accountAmount">{{ user.accountAmount }}</span> Baht</p>
+        {% endfor %}
+    {% else %}
+        <p> No Account are available. </p>
+    {% endif %}
+{% endblock heading %}
+
+{% block content %}
+    <p>username: {{ user }}</p>
+    {% if users %}
+        {% for user in users %}
+            <p>Account ID: {{ user.accountId }} </p>
+        {% endfor %}
+
+    {% else %}
+        <p> No Accounts are available. </p>
+    {% endif %}
+    <hr/> </br>
+{#    <div class="navbuttons">#}
+{#        <button class="btnMain"><a href="{% url 'AIUTS:deposit' %}">Deposit Money</a></button>#}
+{#        <button class="btnMain"><a href="{% url 'AIUTS:addTransaction' %}">Make Transaction</a></button>#}
+{#        <button class="btnMain"><a href="{% url 'AIUTS:paymentRequest' %}">Payment Request</a></button>#}
+{##}
+{#    </div>#}
+
+
+{% endblock content %}
