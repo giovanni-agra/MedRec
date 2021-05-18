@@ -1,36 +1,36 @@
 <h3>Register here</h3>
 <hr>
 
-<form action="{% url 'MedRec:addAccount' %}" method="POST">
+<form action="" method="POST">
     {% csrf_token %}
-    <label for="position">Position</label>
-    <select name="position" id="position">
-        <option value="Practitioner">Practitioner</option>
-        <option value="Nurse">Nurse</option>
-        <option value="Accountant">Accountant</option>
-    </select>
-    <label for="username">Username</label>
-    <input type="text" name="username">
-    <label for="first_name">First Name</label>
-    <input type="text" name="first_name">
-    <label for="last_name">Last Name</label>
-    <input type="text" name="last_name">
-    <label for="email">Email</label>
-    <input type="text" name="email">
-    <label for="password">Password</label>
-    <input type="text" name="password1">
-    <label for="password">Confirm Password</label>
-    <input type="text" name="password2">
+    {#    <label for="position">Position</label>#}
+    {#    <select name="position" id="position">#}
+    {#        <option value="Practitioner">Practitioner</option>#}
+    {#        <option value="Nurse">Nurse</option>#}
+    {#        <option value="Accountant">Accountant</option>#}
+    {#    </select>#}
+    {#    <label for="username">Username</label>#}
+    {#    <input type="text" name="{{ username }}">#}
+    {#    <label for="first_name">First Name</label>#}
+    {#    <input type="text" name="{{ first_name }}">#}
+    {#    <label for="last_name">Last Name</label>#}
+    {#    <input type="text" name="{{ last_name }}">#}
+    {#    <label for="email">Email</label>#}
+    {#    <input type="text" name="{{ email }}">#}
+    {#    <label for="password">Password</label>#}
+    {#    <input type="password" name="{{ password1 }}">#}
+    {#    <label for="password">Confirm Password</label>#}
+    {#    <input type="password" name="{{ password2 }}">#}
+    {##}
+    {#    {% if form.errors %}#}
+    {#        {% for field in form %}#}
+    {#            {% for error in field.errors %}#}
+    {#                <ul class="errorlist">#}
+    {#                    <li class="formError">{{ error|escape }}</li>#}
+    {#                </ul>#}
+    {#            {% endfor %}#}
+    {#        {% endfor %}#}
+    {#    {% endif %}#}
 
-    {% if form.errors %}
-        {% for field in form %}
-            {% for error in field.errors %}
-                <ul class="errorlist">
-                    <li class="formError">{{ error|escape }}</li>
-                </ul>
-            {% endfor %}
-        {% endfor %}
-    {% endif %}
-
-    <button type="submit">Register</button>
+    <input class="submit" type="submit" value="Submit">
 </form>
