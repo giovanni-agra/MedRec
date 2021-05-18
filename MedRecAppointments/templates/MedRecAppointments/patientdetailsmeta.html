@@ -1,0 +1,7 @@
+{% block content %}
+    <h1>Patient Details</h1>
+    <p>Name: {{ object.first_name }} {{ object.last_name }}</p>
+    <p>Email: {{ object.email }}</p>
+    <p>Age: {{ object.age }}</p>
+    <p>PassportNumber: {{ object.passport_number }}</p>
+{% endblock %}

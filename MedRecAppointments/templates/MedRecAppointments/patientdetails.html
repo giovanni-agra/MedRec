@@ -1,0 +1,10 @@
+{% extends "MedRecAppointments/patientdetailsmeta.html" %}
+{% block content %}
+
+    <p>Gender: {{ patient.gender }}</p>
+    <p>Diagnosis: {{ object.diagnosis }}</p>
+    <p>Symptoms: {{ object.symptoms }}</p>
+    <p>Prescription: {{ object.prescription }}</p>
+    <p>Last consulted: {{ object.date }}</p>
+
+{% endblock %}

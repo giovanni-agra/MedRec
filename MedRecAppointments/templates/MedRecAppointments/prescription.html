@@ -1,0 +1,9 @@
+<h3>Prescribe (Doctors only)</h3>
+<hr>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">Submit</button>
+</form>

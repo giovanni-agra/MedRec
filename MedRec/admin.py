@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import GeneralPractitioner
+from .models import Account
 
 # Register your models here.
-admin.site.register(GeneralPractitioner)
+admin.site.register(Account)

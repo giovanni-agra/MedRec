@@ -1,32 +1,34 @@
-{% block heading %}
-
-
-    {% if users %}
-        {% for user in users %}
-            <p>Balance: <span id="accountAmount">{{ user.accountAmount }}</span> Baht</p>
-        {% endfor %}
-    {% else %}
-        <p> No Account are available. </p>
-    {% endif %}
-{% endblock heading %}
+{#{% block heading %}#}
+{##}
+{##}
+{#    {% if users %}#}
+{#        {% for user in users %}#}
+{#            <p>Balance: <span id="accountAmount">{{ user.accountAmount }}</span> Baht</p>#}
+{#        {% endfor %}#}
+{#    {% else %}#}
+{#        <p> No Account are available. </p>#}
+{#    {% endif %}#}
+{#{% endblock heading %}#}
 
 {% block content %}
-    <p>username: {{ user }}</p>
-    {% if users %}
-        {% for user in users %}
-            <p>Account ID: {{ user.accountId }} </p>
+    <p>username: {{ username }}</p>
+    {% if Account_list %}
+        {% for User in Account_list %}
+            <p>Account: {{ User.first_name }} </p>
         {% endfor %}
 
     {% else %}
         <p> No Accounts are available. </p>
     {% endif %}
-    <hr/> </br>
-{#    <div class="navbuttons">#}
-{#        <button class="btnMain"><a href="{% url 'AIUTS:deposit' %}">Deposit Money</a></button>#}
-{#        <button class="btnMain"><a href="{% url 'AIUTS:addTransaction' %}">Make Transaction</a></button>#}
-{#        <button class="btnMain"><a href="{% url 'AIUTS:paymentRequest' %}">Payment Request</a></button>#}
-{##}
-{#    </div>#}
+
+    <a href="{% url 'logout' %}">Logout</a>
+    {#    <hr/> </br>#}
+    {#        <div class="navbuttons">#}
+    {#            <button class="btnMain"><a href="{% url 'AIUTS:deposit' %}">Deposit Money</a></button>#}
+    {#            <button class="btnMain"><a href="{% url 'AIUTS:addTransaction' %}">Make Transaction</a></button>#}
+    {#            <button class="btnMain"><a href="{% url 'AIUTS:paymentRequest' %}">Payment Request</a></button>#}
+    {##}
+    {#        </div>#}
 
 
 {% endblock content %}
