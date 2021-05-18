@@ -10,12 +10,21 @@
 </head>
 
 <body>
-<div class="main1">
-    <p class="sign1">MedRec | Sign in</p>
-    <form class="form1" method="post" action="{% url 'login' %}">
-        {% csrf_token %}
-        <input class="un " type="text" placeholder="Username" name="username">
-        <input class="pass" type="password" placeholder="Password" name="password">
+    <div class="box">
+        <p class="sign1">MedRec | Sign in</p>
+        <form class="" method="post" action="{% url 'login' %}">
+          {% csrf_token %}
+          
+          <div class="input-container">
+              <input type="text" required="" name='username' />
+              <label>Username</label>
+          </div>
+  
+          <div class="input-container">
+              <input type="password" required="" name='password' />
+              <label>Password</label>
+          </div>          
+              <input type="submit" value="login" class="btnlogin" />
         <input type="hidden" name="next" value="{{ next }}"/>
 
         {% if form.errors %}
@@ -24,18 +33,15 @@
 
         {% if next %}
             {% if user.is_authenticated %}
-                <p class="authMsgError">Your account doesn't have access to this page. To proceed,please login with an
+                <p class="authMsg">Your account doesn't have access to this page. To proceed,please login with an
                     account that has access.</p>
             {% else %}
-                <p class="authMsgError">Thank you for signing up, please login to continue.</p>
+                <p class="authMsg">Thank you for signing up, please login to continue.</p>
             {% endif %}
         {% endif %}
-
-        <input class="submit" type="submit" value="login">
-
-        <p class="forgot">Don't have an account? <a class="createA" href="{% url 'MedRec:addAccount' %}">Create
+        <p class="Addition">Don't have an account? <a class="createA" href="{% url 'MedRec:addAccount' %}">Create
             Account</a></p>
-        <p class="forgot">Accountant login: Please click here before login to login as accountant user. <a
+        <p class="Addition">Accountant login:<a
                 class="createA" href="{% url 'MedRecAppointments:AccountantIndex' %}">Here</a>
         </p>
 
