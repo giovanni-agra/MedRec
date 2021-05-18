@@ -1,0 +1,37 @@
+<div class="col-md-5">
+    <h3>Patient Payment Records</h3>
+    <div class="card card-body">
+        <a href="{% url 'MedRecAppointments:createInvoice' %}">
+            <button class="btn btn-primary">Create Invoice</button>
+        </a>
+        <table class="table table-striped">
+            <thead>
+            <th>Date</th>
+            <th>Patient Name</th>
+            <th>Debit</th>
+            <th>Paid</th>
+            <th>Total</th>
+            <th>Invoice</th>
+            </thead>
+            {% for obj in invoice %}
+                <tr>
+                    <td>{{ obj.date }}</td>
+                    <td>{{ obj.patient }}</td>
+                    <td>{{ obj.debt }}</td>
+                    <td>{{ obj.paid }}</td>
+                    <td>{{ obj.total_amount }}</td>
+                    <td>
+                        <a href="{% url 'MedRecAppointments:invoiceDetails' pk=obj.id %}">
+                            <button class="btn btn-primary">Invoice</button>
+                        </a>
+                    </td>
+                    <td><a href="{% url 'MedRecAppointments:invoiceUpdate' pk=obj.id %}">
+                        <button>Update Invoice</button>
+                    </a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <br>
+    <a href="{% url 'logout' %}">Logout</a>
+</div>

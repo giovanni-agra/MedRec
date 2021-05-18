@@ -1,0 +1,6 @@
+{% block content %}
+    <h1>{{ object.patient }}'s Invoice</h1>
+    <p>Total Cost: {{ object.cost }}</p>
+    <p>Already Paid: {{ object.paid }}</p>
+    <p>Left to Pay: {{ object.total_amount }}</p>
+{% endblock %}

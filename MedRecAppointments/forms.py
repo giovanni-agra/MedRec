@@ -34,3 +34,14 @@ class PrescriptionForm(ModelForm):
         if self.instance:
             self.fields['patient'].queryset = PatientCreation.objects.all()
             self.fields['doctor'].queryset = Account.objects.filter(position='Practitioner')
+
+
+class InvoiceForm(ModelForm):
+    class Meta:
+        model = Payment
+        fields = ('patient', 'cost', 'paid')
+
+        def __init__(self, *args, **kwargs):
+            super(InvoiceForm, self).__init__(*args, **kwargs)
+            if self.instance:
+                self.fields['patient'].queryset = Prescription.objects.all()

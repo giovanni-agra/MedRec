@@ -7,13 +7,10 @@
                 <li class="list-group-item">
                     <h3><strong>{{ obj.date }}</strong></h3>
                     <p>Patient Name - {{ obj.patient }}</p>
-                    <p>Symptoms - {{ obj.symptoms }}</p>
-                    <p>Prescription - {{ obj.prescription }}</p>
-
-                    {#                    <a href="{% url 'MedRecAppointments:patientDetails' pk=patient.user.id %}">#}
-                    {#                        <button class="btn btn-primary">Learn More</button>#}
-                    {#                    </a>#}
-
+                    <p>Symptoms - {{ obj.diagnosis }}</p>
+                    {#                    <td><a href="{% url 'MedRecAppointments:patientDetails' pk=obj.id %}">#}
+                    {#                                <button>Details</button>#}
+                    {#                    </a></td>p#}
                 </li>
             {% endfor %}
             <br> <br>

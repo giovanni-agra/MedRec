@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView, CreateView, TemplateView, DetailView
+from django.views.generic import ListView, CreateView, TemplateView, DetailView, UpdateView
 
 from .forms import *
 
@@ -33,6 +33,13 @@ class PrescriptionCreation(LoginRequiredMixin, CreateView):
     success_url = '/staff'
 
 
+class PrescriptionUpdateView(LoginRequiredMixin, UpdateView):
+    login_url = '/accounts/login/'
+    model = Prescription
+    template_name = 'MedRecAppointments/prescription.html'
+    success_url = '/staff'
+
+
 class IndexView(LoginRequiredMixin, ListView):
     login_url = '/accounts/login/'
     template_name = 'MedRecAppointments/index.html'
@@ -58,16 +65,37 @@ class MedHistoryAndPrescriptionList(LoginRequiredMixin, TemplateView):
         return context
 
 
-class PatientMeta(TemplateView):
-
-    def get_context_data(self, **kwargs):
-        context = super(PatientView, self).get_context_data(**kwargs)
-        context['object'] = Prescription.objects.all()
-        context['patient'] = PatientCreation.object.all()
-        return context
-
-
-class PatientView(LoginRequiredMixin, DetailView):
+class PrescriptionDetailView(LoginRequiredMixin, DetailView):
     login_url = '/accounts/login/'
-    model = PatientCreation
+    model = Prescription
     template_name = 'MedRecAppointments/patientdetails.html'
+
+
+class AccountantIndexView(LoginRequiredMixin, ListView):
+    login_url = '/accounts/login/'
+    template_name = 'MedRecAppointments/accountant_index.html'
+    context_object_name = 'invoice'
+
+    def get_queryset(self):
+        return Payment.objects.all()
+
+
+class InvoiceCreateView(LoginRequiredMixin, CreateView):
+    login_url = '/accounts/login/'
+    model = Payment
+    template_name = 'MedRecAppointments/payment_form.html'
+    form_class = InvoiceForm
+    success_url = '/staff/accountant'
+
+
+class InvoiceView(LoginRequiredMixin, DetailView):
+    login_url = '/accounts/login/'
+    model = Payment
+    template_name = 'MedRecAppointments/invoice.html'
+
+
+class UpdateInvoiceView(LoginRequiredMixin, UpdateView):
+    login_url = '/accounts/login/'
+    model = Payment
+    fields = ['paid']
+    success_url = 'accountant/invoicedetails/<int:pk>'

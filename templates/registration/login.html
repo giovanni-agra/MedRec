@@ -31,11 +31,13 @@
             {% endif %}
         {% endif %}
 
-        <input class="submit" type="submit" value="login"/>
+        <input class="submit" type="submit" value="login">
 
         <p class="forgot">Don't have an account? <a class="createA" href="{% url 'MedRec:addAccount' %}">Create
             Account</a></p>
-        <p class="forgot">I am Staff <a class="createA" href="{% url 'MedRecAppointments:Index' %}">Here</a></p>
+        <p class="forgot">I am a Doctor. <a class="createA" href="{% url 'MedRecAppointments:Index' %}">Here</a></p>
+        <p class="forgot">I am an Accountant. <a class="createA" href="{% url 'MedRecAppointments:AccountantIndex' %}">Here</a>
+        </p>
 
     </form>
 </div>

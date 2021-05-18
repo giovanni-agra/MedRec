@@ -34,7 +34,7 @@ class Appointment(models.Model):
 
 class Prescription(models.Model):
     doctor = models.ForeignKey(Account, on_delete=models.CASCADE)
-    patient = models.ForeignKey(PatientCreation, on_delete=models.CASCADE, primary_key=True)
+    patient = models.ForeignKey(PatientCreation, on_delete=models.CASCADE)
     date = models.DateField(auto_now_add=True)
     diagnosis = models.CharField(max_length=255, blank=True)
     symptoms = models.CharField(max_length=500)
@@ -47,9 +47,23 @@ class Prescription(models.Model):
 class Payment(models.Model):
     patient = models.ForeignKey(PatientCreation, on_delete=models.CASCADE, related_name='patient_payment')
     date = models.DateField(auto_now_add=True)
+    cost = models.IntegerField(null=True)
     paid = models.IntegerField(null=True)
     debt = models.IntegerField(null=True)
-    total_amount = models.IntegerField(null=True)
+    total_amount = models.IntegerField(null=True, default=0)
+
+    def calculate_debt(self):
+        debt = self.cost - self.paid
+        return debt
+
+    def calculate_total_amount(self):
+        total_amount = self.total_amount + self.debt
+        return total_amount
+
+    def save(self, *args, **kwargs):
+        self.debt = self.calculate_debt()
+        self.total_amount = self.calculate_total_amount()
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return "Payment Patient:{} Amount:{}".format(self.patient, self.total_amount)
