@@ -4,7 +4,14 @@
     <p>Symptoms: {{ object.symptoms }}</p>
     <p>Prescription: {{ object.prescription }}</p>
     <p>Last consulted: {{ object.date }}</p>
-    <p><a href="{% url 'MedRecAppointments:updatePrescription' pk=object.id %}">
-        <button>Update</button>
+    {% for group in user.groups.all %}
+        {% if group.name == 'Practitioner' %}
+            <p><a href="{% url 'MedRecAppointments:updatePrescription' pk=object.id %}">
+                <button>Update</button>
+            </a></p>
+        {% endif %}
+    {% endfor %}
+    <p><a href="{% url 'MedRecAppointments:Index' %}">
+        <button>Home</button>
     </a></p>
 {% endblock %}

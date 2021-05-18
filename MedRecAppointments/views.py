@@ -1,49 +1,56 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.views.generic import ListView, CreateView, TemplateView, DetailView, UpdateView
 
 from .forms import *
 
 
 # Create your views here.
-class PatientCreateView(LoginRequiredMixin, CreateView):
+
+class PatientCreateView(PermissionRequiredMixin, CreateView):
     login_url = '/accounts/login/'
     model = PatientCreation
     template_name = 'MedRecAppointments/patient_form.html'
     form_class = CreatePatient
-    success_url = '/staff'
+    success_url = '/'
     context_object_name = 'patient'
+    permission_required = 'MedRecAppointments.add_patient_creation'
 
     def get_queryset(self):
         return PatientCreation.objects.all()
 
 
-class AppointmentCreation(LoginRequiredMixin, CreateView):
+class AppointmentCreation(PermissionRequiredMixin, CreateView):
     login_url = '/accounts/login/'
     model = Appointment
     template_name = 'MedRecAppointments/appointment.html'
     form_class = AppointmentForm
-    success_url = '/staff'
+    success_url = '/'
+    permission_required = 'MedRecAppointments.add_appointment'
 
 
-class PrescriptionCreation(LoginRequiredMixin, CreateView):
+class PrescriptionCreation(PermissionRequiredMixin, CreateView):
     login_url = '/accounts/login/'
     model = Prescription
     template_name = 'MedRecAppointments/prescription.html'
     form_class = PrescriptionForm
-    success_url = '/staff'
+    success_url = '/'
+    permission_required = 'MedRecAppointments.add_prescription'
 
 
-class PrescriptionUpdateView(LoginRequiredMixin, UpdateView):
+class PrescriptionUpdateView(PermissionRequiredMixin, UpdateView):
     login_url = '/accounts/login/'
     model = Prescription
+    fields = ['prescription']
     template_name = 'MedRecAppointments/prescription.html'
-    success_url = '/staff'
+    success_url = '/'
+    permission_required = 'MedRecAppointments.change_prescription'
 
 
-class IndexView(LoginRequiredMixin, ListView):
+class IndexView(PermissionRequiredMixin, ListView):
     login_url = '/accounts/login/'
     template_name = 'MedRecAppointments/index.html'
     context_object_name = 'appointment'
+    permission_required = 'MedRecAppointments.view_prescription'
 
     def get_queryset(self):
         return Appointment.objects.all()
@@ -65,33 +72,37 @@ class MedHistoryAndPrescriptionList(LoginRequiredMixin, TemplateView):
         return context
 
 
-class PrescriptionDetailView(LoginRequiredMixin, DetailView):
+class PrescriptionDetailView(PermissionRequiredMixin, DetailView):
     login_url = '/accounts/login/'
     model = Prescription
     template_name = 'MedRecAppointments/patientdetails.html'
+    permission_required = 'MedRecAppointments.view_prescription'
 
 
-class AccountantIndexView(LoginRequiredMixin, ListView):
+class AccountantIndexView(PermissionRequiredMixin, ListView):
     login_url = '/accounts/login/'
     template_name = 'MedRecAppointments/accountant_index.html'
     context_object_name = 'invoice'
+    permission_required = 'MedRecAppointments.view_payment'
 
     def get_queryset(self):
         return Payment.objects.all()
 
 
-class InvoiceCreateView(LoginRequiredMixin, CreateView):
+class InvoiceCreateView(PermissionRequiredMixin, CreateView):
     login_url = '/accounts/login/'
     model = Payment
     template_name = 'MedRecAppointments/payment_form.html'
     form_class = InvoiceForm
-    success_url = '/staff/accountant'
+    success_url = '/accountant'
+    permission_required = 'MedRecAppointments.add_payment'
 
 
-class InvoiceView(LoginRequiredMixin, DetailView):
+class InvoiceView(PermissionRequiredMixin, DetailView):
     login_url = '/accounts/login/'
     model = Payment
     template_name = 'MedRecAppointments/invoice.html'
+    permission_required = 'MedRecAppointments.view_payment'
 
 
 class UpdateInvoiceView(LoginRequiredMixin, UpdateView):
@@ -99,3 +110,4 @@ class UpdateInvoiceView(LoginRequiredMixin, UpdateView):
     model = Payment
     fields = ['paid']
     success_url = 'accountant/invoicedetails/<int:pk>'
+    permission_required = 'MedRecAppointments.change_payment'

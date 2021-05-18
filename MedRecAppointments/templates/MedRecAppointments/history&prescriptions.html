@@ -7,16 +7,20 @@
                 <li class="list-group-item">
                     <h3><strong>{{ obj.date }}</strong></h3>
                     <p>Patient Name - {{ obj.patient }}</p>
-                    <p>Symptoms - {{ obj.diagnosis }}</p>
+                    <p>Diagnosis - {{ obj.diagnosis }}</p>
                     {#                    <td><a href="{% url 'MedRecAppointments:patientDetails' pk=obj.id %}">#}
                     {#                                <button>Details</button>#}
                     {#                    </a></td>p#}
                 </li>
             {% endfor %}
             <br> <br>
-            <a href="{% url 'MedRecAppointments:createPrescription' %}">
-                <button class="btn btn-primary pull-right">Create New Prescription</button>
-            </a>
+            {% for group in user.groups.all %}
+                {% if group.name == 'Practitioner' %}
+                    <a href="{% url 'MedRecAppointments:createPrescription' %}">
+                        <button class="btn btn-primary pull-right">Create New Prescription</button>
+                    </a>
+                {% endif %}
+            {% endfor %}
         </ul>
     </div>
 {% endblock %}
