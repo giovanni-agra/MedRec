@@ -88,6 +88,14 @@
 
                 </table>
                 <br>
+                {% for group in user.groups.all %}
+                    {% if group.name == 'Practitioner' %}
+                        <a href="{% url 'MedRecAppointments:createPrescription' %}">
+                            <button class="btn btn-primary pull-right">Create New Prescription</button>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+                <br><br>
                 <a href="{% url 'MedRecAppointments:historyAndPrescriptions' %}">
                     <button class="btn btn-primary">View All Prescriptions</button>
                 </a>
