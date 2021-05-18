@@ -67,8 +67,6 @@
                     <th>Email</th>
                     <th>Gender</th>
                     <th>Age</th>
-                    {#                    <th>Update</th>#}
-                    {#                    <th>Remove</th>#}
                     </thead>
                     {% for obj in patient %}
                         <tr>
@@ -79,8 +77,6 @@
                             <td><a href="{% url 'MedRecAppointments:patientDetails' pk=obj.id %}">
                                 <button>Details</button>
                             </a></td>
-                            {#                    <td><a href="{% url 'user_profile:profile-pk' pk=obj.user.id %}"><button class="btn btn-warning">Update</button></a></td>#}
-                            {#                    <td><a href="{% url 'user_profile:profile-delete' pk=obj.user.id %}"><button class="btn btn-danger">Delete</button></a></td>#}
                         </tr>
 
                     {% endfor %}
