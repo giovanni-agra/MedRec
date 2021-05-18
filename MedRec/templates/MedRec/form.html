@@ -3,6 +3,7 @@
 
 <form action="" method="POST">
     {% csrf_token %}
+    {{ form.as_p }}
     {#    <label for="position">Position</label>#}
     {#    <select name="position" id="position">#}
     {#        <option value="Practitioner">Practitioner</option>#}
