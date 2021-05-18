@@ -1,6 +1,10 @@
 <h3>Add Payment</h3>
 <hr>
 
+<p><a href="{% url 'MedRecAppointments:AccountIndex' %}">
+    <button>Home</button>
+</a></p>
+
 <form action="" method="POST">
     {% csrf_token %}
     {{ form.as_p }}

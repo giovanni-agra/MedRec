@@ -4,3 +4,6 @@
     <p>Already Paid: {{ object.paid }}</p>
     <p>Left to Pay: {{ object.total_amount }}</p>
 {% endblock %}
+<p><a href="{% url 'MedRecAppointments:AccountIndex' %}">
+    <button>Home</button>
+</a></p>

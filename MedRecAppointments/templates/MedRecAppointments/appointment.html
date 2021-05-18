@@ -1,6 +1,8 @@
 <h3>Make an appointment</h3>
 <hr>
-
+<p><a href="{% url 'MedRecAppointments:Index' %}">
+    <button>Home</button>
+</a></p>
 <form action="" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
