@@ -1,9 +1,32 @@
 <h3>Register here</h3>
 <hr>
 
-<form action="" method="POST">
+<form action="{% url 'MedRec:addAccount' %}" method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
+    <label for="username">Username</label>
+    <input type="text" name="username">
+    <label for="first_name">First Name</label>
+    <input type="text" name="first_name">
+    <label for="last_name">Last Name</label>
+    <input type="text" name="last_name">
+    <label for="email">Email</label>
+    <input type="text" name="email">
+    <label for="position">Position</label>
+    <input type="text" name="position">
+    <label for="password">Password</label>
+    <input type="text" name="password1">
+    <label for="password">Confirm Password</label>
+    <input type="text" name="password2">
+
+    {% if form.errors %}
+        {% for field in form %}
+            {% for error in field.errors %}
+                <ul class="errorlist">
+                    <li class="formError">{{ error|escape }}</li>
+                </ul>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
 
     <button type="submit">Register</button>
 </form>

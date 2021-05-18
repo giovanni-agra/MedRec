@@ -13,7 +13,7 @@ class PatientCreateView(PermissionRequiredMixin, CreateView):
     form_class = CreatePatient
     success_url = '/'
     context_object_name = 'patient'
-    permission_required = 'MedRecAppointments.add_patient_creation'
+    permission_required = 'MedRecAppointments.add_patientcreation'
 
     def get_queryset(self):
         return PatientCreation.objects.all()
@@ -26,6 +26,15 @@ class AppointmentCreation(PermissionRequiredMixin, CreateView):
     form_class = AppointmentForm
     success_url = '/'
     permission_required = 'MedRecAppointments.add_appointment'
+
+
+class AppointmentUpdateView(PermissionRequiredMixin, UpdateView):
+    login_url = '/accounts/login/'
+    model = Appointment
+    template_name = 'MedRecAppointments/appointment.html'
+    fields = ['status']
+    success_url = '/'
+    permission_required = 'MedRecAppointments.change_appointment'
 
 
 class PrescriptionCreation(PermissionRequiredMixin, CreateView):

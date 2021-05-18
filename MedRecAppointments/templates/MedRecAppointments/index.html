@@ -34,6 +34,7 @@
                     <th>Doctor</th>
                     <th>Patient</th>
                     <th>Status</th>
+                    <th>Update</th>
                     </thead>
                     {% for obj in appointment %}
                         <tr>
@@ -43,6 +44,9 @@
                             <td>{{ obj.nurse }}</td>
                             <td>{{ obj.patient }}</td>
                             <td>{{ obj.status }}</td>
+                            <td><a href="{% url 'MedRecAppointments:updateAppointment' pk=obj.id %}">
+                                <button>Update</button>
+                            </a></td>
                         </tr>
                     {% endfor %}
                 </table>

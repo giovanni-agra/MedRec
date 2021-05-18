@@ -21,8 +21,8 @@ class PatientCreation(models.Model):
 
 
 class Appointment(models.Model):
-    date = models.DateField()
-    time = models.TimeField()
+    date = models.DateField(auto_now_add=True)
+    time = models.TimeField(auto_now_add=True)
     status = models.CharField(choices=[
         ('Incomplete', 'Incomplete'),
         ('Complete', 'Complete')

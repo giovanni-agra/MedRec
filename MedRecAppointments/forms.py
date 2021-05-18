@@ -20,8 +20,6 @@ class AppointmentForm(ModelForm):
             self.fields['patient'].queryset = PatientCreation.objects.all()
             self.fields['doctor'].queryset = Account.objects.filter(position='Practitioner')
             self.fields['nurse'].querysest = Account.objects.filter(position='Nurse')
-            self.fields["date"].label = "Date (YYYY-MM-DD)"
-            self.fields["time"].label = "Time 24 hr (HH:MM)"
 
 
 class PrescriptionForm(ModelForm):

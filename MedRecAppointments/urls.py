@@ -7,6 +7,7 @@ urlpatterns = [
     path('', views.IndexView.as_view(), name='Index'),
     path('addpatient/', views.PatientCreateView.as_view(), name='addPatient'),
     path('appointmentcreation/', views.AppointmentCreation.as_view(), name='createAppointment'),
+    path('appointmentupdate/<int:pk>', views.AppointmentUpdateView.as_view(), name='updateAppointment'),
     path('createprescription/', views.PrescriptionCreation.as_view(), name='createPrescription'),
     path('medhistory&prescriptions/', views.MedHistoryAndPrescriptionList.as_view(), name='historyAndPrescriptions'),
     path('patientdetails/<int:pk>', views.PrescriptionDetailView.as_view(), name='patientDetails'),
