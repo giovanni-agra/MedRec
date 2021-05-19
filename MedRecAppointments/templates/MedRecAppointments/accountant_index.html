@@ -1,44 +1,44 @@
 {% extends "MedRecAppointments/baseF.html" %}
 
 {% block content %}
-<div >
-    <h3>Patient Payment Records</h3>
-    <hr/>
+    <div>
+        <h3>Patient Payment Records</h3>
+        <hr/>
         <a href="{% url 'MedRecAppointments:createInvoice' %}" style="top:0;left:0">
-            <button class="btn btn-success" >Create Invoice</button>
-            
-            
+            <button class="btn btn-success">Create Invoice</button>
+
+
         </a>
         <div class="rtable">
-        <table class="table table-striped">
-            <thead>
-            <th>Date</th>
-            <th>Patient Name</th>
-            <th>Debit</th>
-            <th>Paid</th>
-            <th>Total</th>
-            <th>Invoice</th>
-            </thead>
-            {% for obj in invoice %}
-                <tr>
-                    <td>{{ obj.date }}</td>
-                    <td>{{ obj.patient }}</td>
-                    <td>{{ obj.debt }}</td>
-                    <td>{{ obj.paid }}</td>
-                    <td>{{ obj.total_amount }}</td>
-                    <td>
-                        <a href="{% url 'MedRecAppointments:invoiceDetails' pk=obj.id %}">
-                            <button class="btn btn-primary">Invoice</button>
-                        </a>
-                    </td>
-                    <td><a href="{% url 'MedRecAppointments:invoiceUpdate' pk=obj.id %}">
-                        <button class="btn btn-secondary">Update</button>
-                    </a></td>
-                </tr>
-            {% endfor %}
-        </table>
+            <table class="table table-striped">
+                <thead>
+                <th>Date</th>
+                <th>Patient Name</th>
+                <th>Debit</th>
+                <th>Paid</th>
+                <th>Total</th>
+                <th>Invoice</th>
+                </thead>
+                {% for obj in invoice %}
+                    <tr>
+                        <td>{{ obj.date }}</td>
+                        <td>{{ obj.patient }}</td>
+                        <td>{{ obj.debt }}</td>
+                        <td>{{ obj.paid }}</td>
+                        <td>{{ obj.total_amount }}</td>
+                        <td>
+                            <a href="{% url 'MedRecAppointments:invoiceDetails' pk=obj.id %}">
+                                <button class="btn btn-primary">Invoice</button>
+                            </a>
+                        </td>
+                        <td><a href="{% url 'MedRecAppointments:invoiceUpdate' pk=obj.id %}">
+                            <button class="btn btn-secondary">Update</button>
+                        </a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <br>
+        <a href="{% url 'login' %}" class="LogOut">Logout</a>
     </div>
-    <br>
-    <a href="{% url 'logout' %}" class="LogOut">Logout</a>
-</div>
 {% endblock %}

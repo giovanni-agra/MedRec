@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="margin-content">
-        <h1 >Dashboard</h1>
+        <h1>Dashboard</h1>
         <hr>
         <ul class="list-group">
             <li class="list-group-item">
@@ -25,7 +25,7 @@
         <div>
             <h3>Appointments</h3>
             <div class="Card Card-body">
-                
+
                 <table class="table table-striped margin-top">
                     <thead>
                     <th>Date</th>
@@ -57,10 +57,10 @@
             </div>
         </div>
         <br>
-        <div >
+        <div>
             <h3>Last 5 Patients -</h3>
             <div class="card card-body">
-                
+
                 <table class="table table-striped">
                     <thead>
                     <th>Name</th>
@@ -86,10 +86,10 @@
                     {% endfor %}
                     <br><br>
                     {% if user.is_authenticated %}
-                    <a href="{% url 'MedRecAppointments:addPatient' %}" class="Cappoint">
-                        <button class="btn btn-primary">Create Patient</button>
-                    </a>
-                {% endif %}
+                        <a href="{% url 'MedRecAppointments:addPatient' %}" class="Cappoint">
+                            <button class="btn btn-primary">Create Patient</button>
+                        </a>
+                    {% endif %}
                 </table>
                 <br>
                 {% for group in user.groups.all %}
@@ -99,14 +99,14 @@
                         </a>
                     {% endif %}
                 {% endfor %}
-                <a href="{% url 'MedRecAppointments:historyAndPrescriptions' %}" class="Cappoint2" >
+                <a href="{% url 'MedRecAppointments:historyAndPrescriptions' %}" class="Cappoint2">
                     <button class="btn btn-primary">View All Prescriptions</button>
                 </a>
                 <br><br>
-                
+
             </div>
         </div>
     </div>
     <br>
-    <a href="{% url 'logout' %}" class="LogOut" >Logout</a>
+    <a href="{% url 'login' %}" class="LogOut">Logout</a>
 {% endblock %}
