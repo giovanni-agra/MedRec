@@ -118,5 +118,5 @@ class UpdateInvoiceView(LoginRequiredMixin, UpdateView):
     login_url = '/accounts/login/'
     model = Payment
     fields = ['paid']
-    success_url = 'accountant/invoicedetails/<int:pk>'
+    success_url = '/accountant'
     permission_required = 'MedRecAppointments.change_payment'
