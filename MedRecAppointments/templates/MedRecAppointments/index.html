@@ -31,9 +31,9 @@
                     <th>Date</th>
                     <th>Time</th>
                     <th>Doctor</th>
+                    <th>Nurse</th>
                     <th>Patient</th>
                     <th>Status</th>
-                    <th>Update</th>
                     </thead>
                     {% for obj in appointment %}
                         <tr>
@@ -94,15 +94,16 @@
                 <br>
                 {% for group in user.groups.all %}
                     {% if group.name == 'Practitioner' %}
-                        <a href="{% url 'MedRecAppointments:createPrescription' %}">
+                        <a href="{% url 'MedRecAppointments:createPrescription' %}" class="Cappoint3">
                             <button class="btn btn-primary pull-right">Create New Prescription</button>
                         </a>
                     {% endif %}
                 {% endfor %}
-                <br><br>
-                <a href="{% url 'MedRecAppointments:historyAndPrescriptions' %}">
+                <a href="{% url 'MedRecAppointments:historyAndPrescriptions' %}" class="Cappoint2" >
                     <button class="btn btn-primary">View All Prescriptions</button>
                 </a>
+                <br><br>
+                
             </div>
         </div>
     </div>
