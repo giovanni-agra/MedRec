@@ -1,9 +1,15 @@
-<h3>Add Payment</h3>
-<hr>
+{% extends "MedRecAppointments/baseF.html" %}
 
+{% block content %}
+<p class="back"><a href="{% url 'MedRecAppointments:AccountantIndex' %}">
+    <button class ="btn btn-primary ">Back</button>
+</a></p>
+<h3 class="sign1">Add Payment</h3>
+<hr>
 <form action="" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
 
-    <button type="submit">Submit</button>
+    <button class="btn btn-success" type="submit">Update!</button>
 </form>
+{% endblock %}

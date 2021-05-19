@@ -1,6 +1,11 @@
+{% extends "MedRecAppointments/baseF.html" %}
+
+{% block content %}
 <h3>Make an appointment</h3>
 <hr>
-
+<p><a href="{% url 'MedRecAppointments:Index' %}" class="back Cappoint">
+    <button class="btn btn-primary">Back</button>
+</a></p>
 <form action="" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
@@ -10,5 +15,6 @@
     {#    <label for="patient"></label>#}
     {#    <label for="status"></label>#}
 
-    <button type="submit">Submit</button>
+    <button type="submit" class="btn btn-success " >Submit</button>
 </form>
+{% endblock %}

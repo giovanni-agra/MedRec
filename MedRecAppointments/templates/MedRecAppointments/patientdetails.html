@@ -1,17 +1,22 @@
+{% extends "MedRecAppointments/baseF.html" %}
+
 {% block content %}
     <h1>{{ object.patient }}'s Medical History</h1>
-    <p>Diagnosis: {{ object.diagnosis }}</p>
-    <p>Symptoms: {{ object.symptoms }}</p>
-    <p>Prescription: {{ object.prescription }}</p>
-    <p>Last consulted: {{ object.date }}</p>
+    <div class="Card" style="border-radius:25px;">
+    <p class="CardHeader">Diagnosis:<strong class="CardBody">{{ object.diagnosis }}</strong> </p>
+    <p class="CardHeader">Symptoms: <strong class="CardBody">{{ object.symptoms }}</strong></p>
+    <p class="CardHeader">Prescription:<strong class="CardBody">{{ object.prescription }}</strong> </p>
+    <p class="CardHeader">Last consulted:<strong class="CardBody">{{ object.date }}</strong> </p>
     {% for group in user.groups.all %}
         {% if group.name == 'Practitioner' %}
             <p><a href="{% url 'MedRecAppointments:updatePrescription' pk=object.id %}">
-                <button>Update</button>
+                <button class="btn btn-success" >Update</button>
             </a></p>
         {% endif %}
     {% endfor %}
-    <p><a href="{% url 'MedRecAppointments:Index' %}">
-        <button>Home</button>
+</div>
+    <p><a href="{% url 'MedRecAppointments:Index' %}" >
+        <button class="btn btn-primary" >Back</button>
     </a></p>
+
 {% endblock %}

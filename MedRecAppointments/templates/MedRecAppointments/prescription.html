@@ -1,3 +1,7 @@
+{% extends "MedRecAppointments/baseF.html" %}
+
+{% block content %}
+
 <h3>Prescribe (Doctors only)</h3>
 <hr>
 
@@ -5,5 +9,9 @@
     {% csrf_token %}
     {{ form.as_p }}
 
-    <button type="submit">Submit</button>
+    <button type="submit" class="btn btn-success">Submit</button>
 </form>
+<p><a href="{% url 'MedRecAppointments:Index' %}" class="back">
+    <button class="btn btn-primary pull-right">Back</button>
+</a></p>
+{% endblock %}

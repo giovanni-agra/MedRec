@@ -9,19 +9,21 @@
 {#        <p> No Account are available. </p>#}
 {#    {% endif %}#}
 {#{% endblock heading %}#}
-
+{% extends "MedRec/base.html" %}
 {% block content %}
-    <p>username: {{ username }}</p>
+<div>
+    <a href="{% url 'logout' %}" class="logOut" >Logout</a>
+    <p style="font-size: 50px;color:beige">username: {{ username }}</p>
     {% if Account_list %}
         {% for User in Account_list %}
-            <p>Account: {{ User.first_name }} </p>
+            <p style="font-size: 30px;color:beige">Account: <strong style="right: 0%;color:aquamarine">{{ User.first_name }} </strong></p>
         {% endfor %}
 
     {% else %}
         <p> No Accounts are available. </p>
     {% endif %}
 
-    <a href="{% url 'logout' %}">Logout</a>
+    
     {#    <hr/> </br>#}
     {#        <div class="navbuttons">#}
     {#            <button class="btnMain"><a href="{% url 'AIUTS:deposit' %}">Deposit Money</a></button>#}
@@ -29,6 +31,6 @@
     {#            <button class="btnMain"><a href="{% url 'AIUTS:paymentRequest' %}">Payment Request</a></button>#}
     {##}
     {#        </div>#}
-
+</div>
 
 {% endblock content %}

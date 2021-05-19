@@ -8,6 +8,23 @@ body {
 
 }
 
+
+.back{
+    position: absolute;
+    top: 50px;
+    left: 30px;
+
+}
+
+.LogOut{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+color: rgb(255, 255, 255);
+font-weight: bold;
+font-size: 20px;
+}
+
 form {
     display: inline-block;
 }
@@ -21,6 +38,7 @@ form {
 .sign1{
  font-size: 35px ;
  font-style: oblique;
+ color: rgb(255, 255, 255);
  
 }
 .loginEr{
